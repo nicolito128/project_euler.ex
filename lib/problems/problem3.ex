@@ -1,5 +1,5 @@
 defmodule ProjectEuler.Problem3 do
-  import Utils
+  import Utils, only: [prime?: 1]
 
   @moduledoc """
   The prime factors of 13195 are 5, 7, 13 and 29.
