@@ -5,7 +5,6 @@ defmodule ProjectEuler.Problem3 do
   The prime factors of 13195 are 5, 7, 13 and 29.
 
   What is the largest prime factor of the number 600851475143?
-  -----------------------------------------------------------------
 
   - Ref 1: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
   """
