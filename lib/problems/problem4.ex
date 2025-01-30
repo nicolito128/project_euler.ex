@@ -39,4 +39,9 @@ defmodule ProjectEuler.Problem4 do
       if current > acc, do: current, else: acc
     end)
   end
+
+  def start(digits \\ 3) do
+    res = largest_palindrome_with_digits(digits)
+    IO.puts("Largest palindrome made from the product of two #{digits}-digit numbers: #{res}")
+  end
 end
