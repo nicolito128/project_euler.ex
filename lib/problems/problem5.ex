@@ -30,6 +30,6 @@ defmodule ProjectEuler.Problem5 do
 
   def start(n \\ 20) do
     res = lcm(n)
-    IO.puts("The smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is: #{res}")
+    IO.puts("The smallest positive number that is evenly divisible by all of the numbers from 1 to #{n} is: #{res}")
   end
 end
