@@ -8,19 +8,39 @@ defmodule ProjectEuler.Problem9 do
   There exists exactly one Pythagorean triplet for which a + b + c = 1000.
   Find the product abc.
 
-  Ref: https://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple
+  -- Ref: https://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple
+
+  --- m > n > 0
+  --- a = k(m² - n²), b = k(2mn), c = k(m² + n²)
+  --- k = 1, then
+  --- perim = a + b + c
+      perim = m² - n² + 2mn + m² + n²
+      perim = 2m² + 2mn
+      perim = 2m(m + n)
+      perim / 2m = m + n
+      (perim / 2m) - m = n = n(m) <- Formula to get n
   """
 
   @spec euclid_formula(pos_integer(), pos_integer(), pos_integer()) :: {pos_integer(), pos_integer(), pos_integer()}
   def euclid_formula(m, n, k \\ 1) when m > n and n > 0, do: {k*(m*m - n*n), k*(2*m*n), k*(m*m + n*n)}
 
-  def pythagorean_triplet(perim), do: pythagorean_triplet(perim, 2, 1, sum(euclid_formula(2, 1)))
+  @spec euclid_n_formula(pos_integer(), pos_integer()) :: pos_integer()
+  def euclid_n_formula(perim, m) when m > 0, do: div(perim, 2*m) - m
 
-  defp pythagorean_triplet(perim, _m, n, s) when s > perim, do: pythagorean_triplet(perim, n+2, n+1, sum(euclid_formula(n+2, n+1)))
+  def pythagorean_triplet(perim), do: pythagorean_triplet(perim, 2, euclid_formula(2, 1))
 
-  defp pythagorean_triplet(perim, m, n, perim), do: euclid_formula(m, n)
+  defp pythagorean_triplet(perim, m, _) when m > div(perim, 2), do: nil
 
-  defp pythagorean_triplet(perim, m, n, _s), do: pythagorean_triplet(perim, m+1, n, sum(euclid_formula(m+1, n)))
+  defp pythagorean_triplet(perim, _m, {a, b, c} = triplet) when (a + b + c) == perim, do: triplet
+
+  defp pythagorean_triplet(perim, m, {a, b, c} = triplet) when (a + b + c) < perim do
+    n = euclid_n_formula(perim, m)
+    if n >= m or n <= 0 do
+      pythagorean_triplet(perim, m+1, triplet)
+    else
+      pythagorean_triplet(perim, m+1, euclid_formula(m, n))
+    end
+  end
 
   def start(perim \\ 1000) do
     {a, b, c} = triplet = pythagorean_triplet(perim)
