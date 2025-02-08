@@ -8,15 +8,21 @@ defmodule Utils do
 
   def prime?(1), do: false
 
+  def prime?(2), do: true
+
   def prime?(n) when n < 0, do: prime?(abs(n))
 
   def prime?(n), do: prime?(n, 2)
 
-  defp prime?(n, n), do: true
-
   defp prime?(n, p) when rem(n, p) == 0, do: false
 
-  defp prime?(n, p), do: prime?(n, p+1)
+  defp prime?(n, p) do
+    if p >= :math.sqrt(n) do
+      true
+    else
+      prime?(n, p+1)
+    end
+  end
 
   @spec composite?(number()) :: boolean()
   def composite?(0), do: false
