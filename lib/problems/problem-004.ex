@@ -1,4 +1,4 @@
-defmodule ProjectEuler.Problem4 do
+defmodule Problems.P4 do
   @moduledoc """
   A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is
   9009 = 99 * 91.

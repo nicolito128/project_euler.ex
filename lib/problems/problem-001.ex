@@ -1,4 +1,4 @@
-defmodule ProjectEuler.Problem1 do
+defmodule Problems.P1 do
   @moduledoc """
   Ref: https://projecteuler.net/problem=1
 

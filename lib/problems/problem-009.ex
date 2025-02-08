@@ -1,4 +1,4 @@
-defmodule ProjectEuler.Problem9 do
+defmodule Problems.P9 do
   import Tuple, only: [sum: 1, product: 1]
 
   @moduledoc """

@@ -1,4 +1,4 @@
-defmodule ProjectEuler.Problem6 do
+defmodule Problems.P6 do
   import Utils, only: [gauss_sum: 1, square_sum: 1]
 
   @moduledoc """

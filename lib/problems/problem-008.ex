@@ -1,4 +1,4 @@
-defmodule ProjectEuler.Problem8 do
+defmodule Problems.P8 do
   @moduledoc """
   The four adjacent digits in the 1000-digit number that have the greatest product are 9 x 9 x 8 x 9 = 5832.
 

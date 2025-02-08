@@ -1,4 +1,4 @@
-defmodule ProjectEuler.Problem3 do
+defmodule Problems.P3 do
   import Utils, only: [prime?: 1]
 
   @moduledoc """
