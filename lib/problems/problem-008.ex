@@ -27,7 +27,7 @@ defmodule Problems.P8 do
   end
 
   def start(adjacent_digits \\ 13) do
-    case File.read("lib/problems/problem8-number.txt") do
+    case File.read("lib/problems/problem-008-number.txt") do
       {:ok, str_number} ->
         bignum = String.to_integer(str_number)
         result = find_greatest_product(bignum, adjacent_digits)
