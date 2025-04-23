@@ -9,9 +9,7 @@ defmodule Problems.P8 do
 
   defp product(_num, 0, acc), do: acc
 
-  defp product(num, digits, acc) when num > 0, do: product(div(num, 10), digits - 1, acc * (rem(num, 10)))
-
-  defp product(num, digits, acc), do: product(num, digits - 1, acc)
+  defp product(num, digits, acc), do: product(div(num, 10), digits - 1, acc * (rem(num, 10)))
 
   def find_greatest_product(num, digits), do: find_greatest_product(num, digits, 1)
 
