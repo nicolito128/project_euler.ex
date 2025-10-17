@@ -9,7 +9,7 @@ defmodule Problems.P8 do
 
   defp product(_num, 0, acc), do: acc
 
-  defp product(num, digits, acc), do: product(div(num, 10), digits - 1, acc * (rem(num, 10)))
+  defp product(num, digits, acc), do: product(div(num, 10), digits - 1, acc * rem(num, 10))
 
   def find_greatest_product(num, digits), do: find_greatest_product(num, digits, 1)
 
@@ -17,6 +17,7 @@ defmodule Problems.P8 do
 
   defp find_greatest_product(num, digits, greater) do
     newGreater = product(num, digits, 1)
+
     if newGreater > greater do
       find_greatest_product(div(num, 10), digits, newGreater)
     else
@@ -29,10 +30,10 @@ defmodule Problems.P8 do
       {:ok, str_number} ->
         bignum = String.to_integer(str_number)
         result = find_greatest_product(bignum, adjacent_digits)
-        IO.puts "Result: #{result}"
-      {:error, _ } ->
-        IO.puts "File not found!"
-    end
+        IO.puts("Result: #{result}")
 
+      {:error, _} ->
+        IO.puts("File not found!")
+    end
   end
 end

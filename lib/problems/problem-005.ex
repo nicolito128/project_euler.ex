@@ -14,7 +14,8 @@ defmodule Problems.P5 do
 
   def simplify(n, [_head | tail]), do: simplify(n, tail)
 
-  defp lcm(from, to, list) when from == (to + 1), do: list |> Enum.reduce(1, fn x, acc -> x * acc end)
+  defp lcm(from, to, list) when from == to + 1,
+    do: list |> Enum.reduce(1, fn x, acc -> x * acc end)
 
   defp lcm(from, to, list) do
     f = simplify(from, list)
@@ -30,6 +31,9 @@ defmodule Problems.P5 do
 
   def start(n \\ 20) do
     res = lcm(n)
-    IO.puts("The smallest positive number that is evenly divisible by all of the numbers from 1 to #{n} is: #{res}")
+
+    IO.puts(
+      "The smallest positive number that is evenly divisible by all of the numbers from 1 to #{n} is: #{res}"
+    )
   end
 end

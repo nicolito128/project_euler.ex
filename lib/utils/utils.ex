@@ -20,7 +20,7 @@ defmodule Utils do
     if p >= :math.sqrt(n) do
       true
     else
-      prime?(n, p+1)
+      prime?(n, p + 1)
     end
   end
 
@@ -34,8 +34,8 @@ defmodule Utils do
   def composite?(n), do: not prime?(n)
 
   @spec gauss_sum(non_neg_integer()) :: non_neg_integer()
-  def gauss_sum(n), do: (n * (n + 1)) / 2 |> ceil()
+  def gauss_sum(n), do: (n * (n + 1) / 2) |> ceil()
 
   @spec square_sum(non_neg_integer()) :: non_neg_integer()
-  def square_sum(n), do: gauss_sum(n) * ((2*n + 1) / 3) |> ceil()
+  def square_sum(n), do: (gauss_sum(n) * ((2 * n + 1) / 3)) |> ceil()
 end

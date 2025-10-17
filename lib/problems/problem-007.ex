@@ -16,9 +16,9 @@ defmodule Problems.P7 do
 
   defp gen_primes(n, c, p, list) do
     if prime?(p) do
-      gen_primes(n, c+1, p+1, [p | list])
+      gen_primes(n, c + 1, p + 1, [p | list])
     else
-      gen_primes(n, c, p+1, list)
+      gen_primes(n, c, p + 1, list)
     end
   end
 

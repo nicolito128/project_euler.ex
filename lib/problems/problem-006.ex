@@ -11,7 +11,7 @@ defmodule Problems.P6 do
   def start(n \\ 100) do
     sum = gauss_sum(n)
     squares = square_sum(n)
-    res = sum**2 - squares
+    res = sum ** 2 - squares
     IO.puts("#{sum}^2 - #{squares} = #{res}")
   end
 end

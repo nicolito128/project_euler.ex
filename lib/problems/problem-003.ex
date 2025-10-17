@@ -11,8 +11,11 @@ defmodule Problems.P3 do
 
   def get_primes(n) do
     q = :math.sqrt(n) |> ceil
-    primes = 2..q
-    |> Stream.filter(&prime?/1)
+
+    primes =
+      2..q
+      |> Stream.filter(&prime?/1)
+
     primes
   end
 

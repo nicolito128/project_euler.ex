@@ -12,15 +12,15 @@ defmodule Problems.P10 do
 
   defp sum_primes(limit, n, acc) do
     if prime?(n) do
-      sum_primes(limit, n+1, acc+n)
+      sum_primes(limit, n + 1, acc + n)
     else
-      sum_primes(limit, n+1, acc)
+      sum_primes(limit, n + 1, acc)
     end
   end
 
   def start(limit \\ 2_000_000) do
     result = sum_primes(limit)
 
-    IO.puts "sum[2, #{limit}) = #{result}"
+    IO.puts("sum[2, #{limit}) = #{result}")
   end
 end

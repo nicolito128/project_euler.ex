@@ -21,30 +21,33 @@ defmodule Problems.P9 do
       (perim / 2m) - m = n = n(m) <- Formula to get n
   """
 
-  @spec euclid_formula(pos_integer(), pos_integer(), pos_integer()) :: {pos_integer(), pos_integer(), pos_integer()}
-  def euclid_formula(m, n, k \\ 1) when m > n and n > 0, do: {k*(m*m - n*n), k*(2*m*n), k*(m*m + n*n)}
+  @spec euclid_formula(pos_integer(), pos_integer(), pos_integer()) ::
+          {pos_integer(), pos_integer(), pos_integer()}
+  def euclid_formula(m, n, k \\ 1) when m > n and n > 0,
+    do: {k * (m * m - n * n), k * (2 * m * n), k * (m * m + n * n)}
 
   @spec euclid_n_formula(pos_integer(), pos_integer()) :: pos_integer()
-  def euclid_n_formula(perim, m) when m > 0, do: div(perim, 2*m) - m
+  def euclid_n_formula(perim, m) when m > 0, do: div(perim, 2 * m) - m
 
   def pythagorean_triplet(perim), do: pythagorean_triplet(perim, 2, euclid_formula(2, 1))
 
   defp pythagorean_triplet(perim, m, _) when m > div(perim, 2), do: nil
 
-  defp pythagorean_triplet(perim, _m, {a, b, c} = triplet) when (a + b + c) == perim, do: triplet
+  defp pythagorean_triplet(perim, _m, {a, b, c} = triplet) when a + b + c == perim, do: triplet
 
-  defp pythagorean_triplet(perim, m, {a, b, c} = triplet) when (a + b + c) < perim do
+  defp pythagorean_triplet(perim, m, {a, b, c} = triplet) when a + b + c < perim do
     n = euclid_n_formula(perim, m)
+
     if n >= m or n <= 0 do
-      pythagorean_triplet(perim, m+1, triplet)
+      pythagorean_triplet(perim, m + 1, triplet)
     else
-      pythagorean_triplet(perim, m+1, euclid_formula(m, n))
+      pythagorean_triplet(perim, m + 1, euclid_formula(m, n))
     end
   end
 
   def start(perim \\ 1000) do
     {a, b, c} = triplet = pythagorean_triplet(perim)
-    IO.puts "sum({#{a}, #{b}, #{c}}) = #{sum(triplet)}"
-    IO.puts "product({#{a}, #{b}, #{c}}) = #{product(triplet)}"
+    IO.puts("sum({#{a}, #{b}, #{c}}) = #{sum(triplet)}")
+    IO.puts("product({#{a}, #{b}, #{c}}) = #{product(triplet)}")
   end
 end
